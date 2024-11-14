@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e3f2fd; /* Soft light blue background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Form Container */
+    form {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    /* Form Heading */
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Form Group */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    /* Label Styles */
+    label {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Input and Textarea Styles */
+    input[type="text"], 
+    input[type="email"], 
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    /* Input Focus Styles */
+    input[type="text"]:focus, 
+    input[type="email"]:focus, 
+    textarea:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    /* Textarea Styles */
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Submit Button Styles */
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Submit Button Hover Effect */
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    /* Placeholder Styles */
+    input::placeholder, 
+    textarea::placeholder {
+      color: #aaa;
+    }
+
+    /* Success Message Style */
+    .success-message {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1rem;
+      border: 1px solid #c3e6cb;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Success Icon */
+    .success-message .icon {
+      margin-right: 10px;
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form id="contact-form">
+    <h2>Contact Us</h2>
+    <div class="form-group">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Submit Feedback">
+    </div>
+  </form>
+
+  <!-- Success Message -->
+  <div id="success-message" class="success-message">
+    <span class="icon">✔</span>
+    Feedback submitted successfully!
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();  // Prevent the form from submitting the traditional way
+
+      // Display the success message
+      const successMessage = document.getElementById('success-message');
+      successMessage.style.display = 'block';
+      successMessage.style.opacity = 1;  // Fade in
+
+      // Optionally, clear the form fields
+      document.getElementById('contact-form').reset();
+
+      // Hide the success message after 5 seconds (fade out)
+      setTimeout(function() {
+        successMessage.style.opacity = 0;  // Fade out
+        setTimeout(function() {
+          successMessage.style.display = 'none';  // Hide after fading out
+        }, 500);
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>
